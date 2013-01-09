@@ -4,7 +4,7 @@
 
 GAlytics is a really, really small JavaScript library (~800 bytes minified, ~450 bytes gzipped) for tracking Google Analytics events declaratively. Simply add `data` attributes to your elements and the library will do the rest.
 
-It also provides utilities for easier tracking of events.
+It's a plain old JS with no dependencies (other than ga.js).
 
 ## Usage
 
