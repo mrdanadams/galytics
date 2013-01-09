@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>GAlytics Sample Usage</title>
+    <style type="text/css">
+      a {
+        text-decoration: none;
+        color: #333; text-shadow: 1px 1px 1px #eee;
+        border: 1px solid #a2a2a2;
+        background-color: #ccc;
+        border-radius: 3px;
+        font-family: Verdana;
+        padding: .5em;
+        display: block;
+        margin-bottom: 1em;
+        width: 225px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>GAlytics Sample Usage</h1>
+    <p>Click each of the below links and see the event logged in the console.</p>
+
+    <a href="#" data-ga-event="simple">A simple event</a>
+    <a href="#" data-ga-event="with-label" data-ga-event-label="Captain America">One with a label</a>
+    <a href="#" data-ga-event="with-value" data-ga-event-value="42">One with a value</a>
+    <a href="#" data-ga-event="with-value-and-label" data-ga-event-label="Thanks for all the fish!" data-ga-event-value="42">Both label and value</a>
+    <a href="#" data-ga-event="with-category" data-ga-event-label="Thanks for all the fish!" data-ga-event-value="42" data-ga-event-category="interesting-events">Label, value, and category</a>
+  </body>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37555005-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+  <script src="galytics.min.js" async></script>
+</html>
