@@ -3,19 +3,23 @@
   <head>
     <title>GAlytics Sample Usage</title>
     <style type="text/css">
+      body { font-family: Verdana; }
+
       a {
         text-decoration: none;
         color: #333; text-shadow: 1px 1px 1px #eee;
         border: 1px solid #a2a2a2;
         background-color: #ccc;
         border-radius: 3px;
-        font-family: Verdana;
         padding: .5em;
         display: block;
         margin-bottom: 1em;
         width: 225px;
         text-align: center;
       }
+
+      #hoverdemo { background: #8C376E; width: 500px; height: 100px; display: block; text-align: center; font-size: 36px; color: white; padding-top: 50px; -webkit-transition: background 1s; }
+      #hoverdemo:hover { background: #F25270; }
     </style>
   </head>
   <body>
@@ -27,6 +31,8 @@
     <a href="#" data-ga-event="with-value" data-ga-event-value="42">One with a value</a>
     <a href="#" data-ga-event="with-value-and-label" data-ga-event-label="Thanks for all the fish!" data-ga-event-value="42">Both label and value</a>
     <a href="#" data-ga-event="with-category" data-ga-event-label="Thanks for all the fish!" data-ga-event-value="42" data-ga-event-category="interesting-events">Label, value, and category</a>
+
+    <div id="hoverdemo" data-ga-event="mouseover:hoverbaby">Mouse over me</div>
   </body>
 
   <script type="text/javascript">
@@ -41,5 +47,5 @@
     })();
 
   </script>
-  <script src="galytics.min.js" async></script>
+  <script src="galytics.js" async></script>
 </html>

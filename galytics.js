@@ -27,22 +27,28 @@ galytics = (function(_gaq) {
     // Call to set up tracking on annotated elements.
     // Must be called after GA setup code but the GA library doesn't actually need to be initialized yet.
     init: function() {
-      var els = document.querySelectorAll('a[data-ga-event]'),
-        i, event, el, label, value, category, options;
+      var els = document.querySelectorAll('*[data-ga-event]'),
+        i, event, m, name, el, label, value, category, options, m;
 
       for (i=0; i<els.length; i++) {
         el = els[i];
-        // TODO register the click handler but don't parse until we've got the first event
-        event = el.getAttribute('data-ga-event');
+        name = el.getAttribute('data-ga-event');
+        event = "click";
+
+        if (!undef(m = name.match(/^([^:]+):(.+)$/))) {
+          event = m[1];
+          name = m[2];
+        }
+
         label = el.getAttribute('data-ga-event-label');
         value = el.getAttribute('data-ga-event-value');
         category = el.getAttribute('data-ga-event-category');
         if (!undef(value)) value = +value;
 
         options = {"label": label, "value": value, "category":category};
-        el.addEventListener('click', (function(event, options, o) {
-          return function() { o.trackEvent(event, options); };
-        })(event, options, this));
+        el.addEventListener(event, (function(name, options, o) {
+          return function() { o.trackEvent(name, options); };
+        })(name, options, this));
       }
     }
   };

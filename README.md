@@ -42,6 +42,12 @@ Ex:
   <a href="#" data-ga-event="with-category" data-ga-event-label="Thanks for all the fish!" data-ga-event-value="42" data-ga-event-category="interesting-events">Label, value, and category</a>
 ```
 
+You can also track non-click events like so:
+
+```html
+<div data-ga-event="mouseover:i-got-hovered">Mouse over me</div>
+```
+
 ## License
 
 MIT
