@@ -14,6 +14,9 @@ galytics = (function(_gaq) {
       var args;
       options = options || {};
 
+      // category is required
+      options.category = options.category || "uncategorized";
+
       args = ['_trackEvent', options.category, name];
 
       // if you include a value, you must include a label (even if it's undefined)

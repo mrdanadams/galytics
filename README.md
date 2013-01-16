@@ -30,7 +30,7 @@ Annotate links with data attributes:
 * _data-ga-event_: The event name to be tracked when clicked.
 * _data-ga-event-label_: (optional) The event label.
 * _data-ga-event-value_: (optional) The event value (must be an integer).
-* _data-ga-event-category_: (optional) The event category.
+* _data-ga-event-category_: (required, sort of) The event category. Defaults to "uncategorized" if none is provided.
 
 Ex:
 
