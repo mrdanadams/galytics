@@ -4,7 +4,7 @@
 // ==/ClosureCompiler==
 // see http://closure-compiler.appspot.com/home
 
-galytics = (function(_gaq) {
+galytics = (function(window) {
   "use strict";
 
   var undef, o = {
@@ -23,7 +23,10 @@ galytics = (function(_gaq) {
       if (!undef(options.label) || !undef(options.value)) args.push(options.label || undefined);
       if (!undef(options.value)) args.push(+options.value);
 
-      _gaq.push(args);
+      // note: _gaq is initially an array which is replaced later with on object that accepts .push()
+      // to act like an array. so if you hold onto the array instance you'll queue up a bunch of events
+      // that never get processed.
+      window._gaq.push(args);
       this.log(args);
     },
 
@@ -58,7 +61,7 @@ galytics = (function(_gaq) {
 
   undef = function(o) { return typeof o == "undefined" || o == null; }
 
-  if (undef(_gaq)) throw "Must be loaded after the GA loading code";
+  if (undef(window._gaq)) throw "Must be loaded after the GA loading code";
 
   if (undef(console) || undef(console.log))
     o.log = function() {};
@@ -68,4 +71,4 @@ galytics = (function(_gaq) {
   o.init();
   
   return o;
-})(_gaq);
+})(this);
